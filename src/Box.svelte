@@ -1,17 +1,17 @@
 <script>
-    export let value;
-    export let interactive = false;
-    export let showValue = true;
+    export let value
+    export let interactive = false
+    export let showValue = true
 
-    let height = Math.sqrt(value);
-    let width = Math.sqrt(value);
-    let currentlyResizing = false;
+    let height = Math.sqrt(value)
+    let width = Math.sqrt(value)
+    let currentlyResizing = false
 
     function mousemove(event) {
         if (currentlyResizing) {
-            width = event.clientX - event.target.getBoundingClientRect().left;
-            height = event.clientY - event.target.getBoundingClientRect().top;
-            value = width * height;
+            width = event.clientX - event.target.getBoundingClientRect().left
+            height = event.clientY - event.target.getBoundingClientRect().top
+            value = width * height
         }
     }
 </script>
@@ -21,11 +21,11 @@
     class={interactive ? "interactive" : ""}
     on:mousedown={() => {
         if (interactive) {
-            currentlyResizing = true;
+            currentlyResizing = true
         }
     }}
     on:mouseup={() => {
-        currentlyResizing = false;
+        currentlyResizing = false
     }}
     on:mousemove={mousemove}
 >
@@ -47,6 +47,7 @@
         border: 3px solid black;
         background-color: gray;
         box-sizing: border-box;
+        user-select: none;
     }
     .interactive #box {
         cursor: nwse-resize;
